@@ -35,19 +35,19 @@ const Hero = () => {
             backgroundPosition: 'top center',
             backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path})` }}>
                 <div className='flex flex-col w-[30vw] text-white pl-[8rem] pt-[15rem] mb-[3rem] '>
-                    <h1 className='text-5xl font-bold'>Movie Name</h1>
+                    <h1 className='text-5xl font-bold'>{movie?.name}</h1>
                     <div className='flex mt-[1rem]'>
                      <button className='h-[3vh] w-[4vw] font-bold text-xl rounded-sm bg-gray-900 mr-[1rem] hover:bg-white hover:text-black duration-300'>Play</button>
                      <button className='h-[3vh] w-[4vw] font-bold text-xl rounded-sm bg-gray-900 mr-[1rem] hover:bg-white hover:text-black duration-300'> My List</button>
 
                     </div>
                     <h1 className='mt-[1rem] text-xl font-bold break-words'>
-                        {truncate('iaLPVn4j7TBiL0l9xexooe24UbXIkvWL7n7uSGryh1JjEfjofQrQefViaLPVn4j7TBiL0l9xexooe24UbXIkvWL7n7uSGryh1JjEfjofQrQefViaLPVn4j7TBiL0l9xexooe24UbXIkvWL7n7uSGryh1JjEfjofQrQefV')}
+                        {truncate(movie?.overview)}
                     </h1>
                     
                     
                 </div>
-                <div className='h-[30%] bg-gradient-to-t from-white/10 to-black/10'></div>
+                <div className='h-[40%] bg-gradient-to-t from-white/15 via-black/15 to-transparent transition-all duration-700'></div>
             </header>
     </>
   )

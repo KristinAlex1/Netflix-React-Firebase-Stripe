@@ -17,7 +17,7 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
   }, [fetchUrl]);
 
   const handleScroll = (direction) => {
-    const scrollAmount = direction === "left" ? -300 : 300;
+    const scrollAmount = direction === "left" ? -350 : 350;
     rowRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
   };
 
@@ -33,18 +33,20 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
       >
         {/* Movie Posters */}
         {movies.map((movie) => (
-          <img
-            className={`${
-              isLargeRow
-                ? "h-[20rem] w-[16rem] m-[1rem]"
-                : "h-[12rem] w-[20rem] m-[1rem]"
-            }`}
-            key={movie.id}
-            src={`${base_url}${
-              isLargeRow ? movie.poster_path : movie.backdrop_path
-            }`}
-            alt={movie.name || "Movie"}
-          />
+          (isLargeRow && movie.poster_path) || (!isLargeRow && movie.backdrop_path) ? (
+            <img
+              className={`${
+                isLargeRow
+                  ? "h-[24rem] w-[20rem] m-[0.5rem] transform transition-transform duration-300 hover:scale-150"
+                  : "h-[18rem] w-[30rem] m-[0.5rem] transform transition-transform duration-300 hover:scale-110"
+              }`}
+              key={movie.id}
+              src={`${base_url}${
+                isLargeRow ? movie.poster_path : movie.backdrop_path
+              }`}
+              alt={movie.name || "Movie"}
+            />
+          ) : null
         ))}
       </div>
 

@@ -26,6 +26,7 @@ function App() {
       <Row
       title="Top Rated"
       fetchUrl = {requests.fetchTopRated}
+      isLargeRow = {true}
 
       />
       <Row
@@ -36,6 +37,7 @@ function App() {
       <Row
       title="Comedy Movies"
       fetchUrl = {requests.fetchComedyMovies}
+      isLargeRow = {true}
 
       />
       <Row
@@ -46,11 +48,13 @@ function App() {
       <Row
       title="Romance Movies"
       fetchUrl = {requests.fetchRomanceMovies}
+      isLargeRow = {true}
 
       />
       <Row
       title="Documenteries"
       fetchUrl = {requests.fetchDocumentaries}
+      isLargeRow = {true}
 
       />  
     </div>

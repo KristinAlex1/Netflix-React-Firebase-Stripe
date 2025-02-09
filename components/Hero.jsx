@@ -48,7 +48,7 @@ const Hero = () => {
                     
                 </div>
                 <div className='h-[33%] bg-gradient-to-t from-white/25 via-black/25 to-transparent transition-all duration-700'></div>
-            </header>
+        </header>
     </>
   )
 }

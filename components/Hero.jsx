@@ -30,7 +30,7 @@ const Hero = () => {
 
   return (
     <>
-        <header className='h-[55vh] 'style={{ 
+        <header className='h-[52vh] 'style={{ 
             backgroundSize: 'cover',
             backgroundPosition: 'top center',
             backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path})` }}>

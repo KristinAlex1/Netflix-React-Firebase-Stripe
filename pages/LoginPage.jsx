@@ -16,15 +16,13 @@ const LoginPage = () => {
           src="src\assets\Netflix_Logo_RGB.png"
         />
         <button
-          onClick={setSignIn(true)}
+          onClick={() => setSignIn(true)}
           className="h-[3vh] w-[4vw] bg-red-600 text-white text-xl mr-[4rem] rounded-sm"
         >
           Sign In
         </button>
       </div>
-      {signIn ? (
-        <SignIn />
-      ) : (
+      
         <header
           style={{
             backgroundSize: "cover",
@@ -33,8 +31,9 @@ const LoginPage = () => {
           }}
           className="h-screen w-full"
         >
-          <div className="h-[33%] bg-gradient-to-b from-black/85 via-black/85 to-transparent transition-all duration-700"></div>
-
+        
+          <div className="h-[35%] bg-gradient-to-b from-black/95 via-black/85 to-transparent transition-all duration-700"></div>
+          {signIn ? <SignIn/> : 
           <div className="flex flex-col justify-center items-center">
             <h1 className="text-white text-7xl font-bold pb-[2rem]">
               Unlimited films, TV programmes and more.
@@ -52,15 +51,16 @@ const LoginPage = () => {
                 placeholder="Email Address"
               ></input>
               <button
-                onClick={setSignIn(true)}
+                onClick={() => setSignIn(true)}
                 className="h-[3.5vh] w-[6vw] ml-[1rem] rounded-sm text-white text-2xl bg-red-600"
               >
                 Get Started
               </button>
             </div>
-          </div>
+          </div>}
+          <div className="h-[35%] bg-gradient-to-t from-black/95 via-black/85 to-transparent transition-all duration-700"></div>
         </header>
-      )}
+      
     </>
   );
 };

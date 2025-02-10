@@ -1,64 +1,25 @@
 import Hero from "../components/Hero"
 import Navbar from "../components/Navbar"
 import Row from "../components/Row"
+import Homepage from "../pages/Homepage"
+import LoginPage from "../pages/LoginPage"
 import requests from "./Request"
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom"
 
 
 
 
 function App() {
+  const user = null;
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={user ? <Homepage/> :  <LoginPage/>} />
+      
+    )
+  )
   
 
-  return (
-    <div className="bg-black">
-      <Navbar/>
-      <Hero/>
-      <Row 
-        title="NETFLIX ORIGINALS"
-        fetchUrl = {requests.fetchNetflixOriginals}
-        isLargeRow = {true}
-      />
-      <Row
-      title="Trending Now"
-      fetchUrl = {requests.fetchTrending}
-
-      />
-      <Row
-      title="Top Rated"
-      fetchUrl = {requests.fetchTopRated}
-      isLargeRow = {true}
-
-      />
-      <Row
-      title="Action Movies"
-      fetchUrl = {requests.fetchActionMovies}
-
-      />
-      <Row
-      title="Comedy Movies"
-      fetchUrl = {requests.fetchComedyMovies}
-      isLargeRow = {true}
-
-      />
-      <Row
-      title="Horror Movies"
-      fetchUrl = {requests.fetchHorrorMovies}
-
-      />
-      <Row
-      title="Romance Movies"
-      fetchUrl = {requests.fetchRomanceMovies}
-      isLargeRow = {true}
-
-      />
-      <Row
-      title="Documenteries"
-      fetchUrl = {requests.fetchDocumentaries}
-      isLargeRow = {true}
-
-      />  
-    </div>
-  )
+  return <RouterProvider router={router} />;
 }
 
 export default App

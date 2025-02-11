@@ -4,6 +4,8 @@ import SignIn from "../components/SignIn";
 
 const LoginPage = () => {
   const [signIn, setSignIn] = useState(false);
+
+  
   return (
     <>
       <div
@@ -17,7 +19,7 @@ const LoginPage = () => {
         />
         <button
           onClick={() => setSignIn(true)}
-          className="h-[3vh] w-[4vw] bg-red-600 text-white text-xl mr-[4rem] rounded-sm"
+          className="h-[3vh] w-[4vw] bg-red-600 text-white text-xl mr-[4rem] rounded-sm hover:bg-gray-900 duration-300"
         >
           Sign In
         </button>
@@ -29,7 +31,7 @@ const LoginPage = () => {
             backgroundPosition: "center center",
             backgroundImage: `url("https://wallpapers.com/images/hd/netflix-background-gs7hjuwvv2g0e9fj.jpg")`,
           }}
-          className="h-screen w-full"
+          className="h-screen w-full bg-no-repeat"
         >
         
           <div className="h-[35%] bg-gradient-to-b from-black/95 via-black/85 to-transparent transition-all duration-700"></div>
@@ -58,7 +60,7 @@ const LoginPage = () => {
               </button>
             </div>
           </div>}
-          <div className="h-[35%] bg-gradient-to-t from-black/95 via-black/85 to-transparent transition-all duration-700"></div>
+          <div className="h-[45%] bg-gradient-to-t from-black/95 via-black/85 to-transparent transition-all duration-700"></div>
         </header>
       
     </>

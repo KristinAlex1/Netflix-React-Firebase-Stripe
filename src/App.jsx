@@ -6,6 +6,7 @@ import { login, logout, selectUser } from "./features/userSlice";
 import { useEffect, useCallback, useState } from "react";
 import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
+import Profile from "../pages/Profile";
 
 function App() {
   const user = useSelector(selectUser);
@@ -62,7 +63,10 @@ function App() {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={user ? <Homepage /> : <LoginPage />} />
+      <>
+        <Route path="/" element={user ? <Homepage /> : <LoginPage />} />
+        <Route path="/profile" element={<Profile />} />
+      </>
     )
   );
 

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { auth } from '../src/firebase';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"; 
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth"; 
 import { useNavigate } from 'react-router-dom';
 
 
@@ -41,6 +41,20 @@ const SignIn = () => {
         })
         .catch((error) => alert(error.message))
       };
+
+    const signOutFunction = (e) => {
+        e.preventDefault();
+
+        signOut(auth)
+        .then(() => {
+            console.log("User signed out successfully")
+    })
+        .catch(() => {
+            console.error("Error signing out:", error);
+
+        })
+
+    }
   return (
     <div  className='flex items-center justify-center'>
         <div className='flex flex-col h-[40vh]  w-[35rem] bg-black/85'>

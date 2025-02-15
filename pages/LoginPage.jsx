@@ -19,7 +19,7 @@ const LoginPage = () => {
         />
         <button
           onClick={() => setSignIn(true)}
-          className="h-[3vh] w-[4vw] bg-red-600 text-white text-xl mr-[4rem] rounded-sm hover:bg-gray-900 duration-300"
+          className="h-[3vh] w-[4vw] bg-red-600 text-white text-xl mr-[4rem] rounded-sm hover:bg-gray-900 duration-300 cursor-pointer"
         >
           Sign In
         </button>
@@ -54,7 +54,7 @@ const LoginPage = () => {
               ></input>
               <button
                 onClick={() => setSignIn(true)}
-                className="h-[3.5vh] w-[6vw] ml-[1rem] rounded-sm text-white text-2xl bg-red-600"
+                className="h-[3.5vh] w-[6vw] ml-[1rem] rounded-sm text-white text-2xl bg-red-600 cursor-pointer"
               >
                 Get Started
               </button>

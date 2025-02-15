@@ -30,11 +30,11 @@ const Hero = () => {
 
   return (
     <>
-        <header className='h-[52vh] 'style={{ 
+        <header className='relative h-[52vh] 'style={{ 
             backgroundSize: 'cover',
-            backgroundPosition: 'top center',
+            backgroundPosition: 'center center',
             backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path})` }}>
-                <div className='flex flex-col w-[30vw] text-white pl-[8rem] pt-[15rem] mb-[3rem] '>
+                <div className='absolute inset-0 flex flex-col w-[30vw] text-white pl-[8rem] pt-[15rem] mb-[3rem] '>
                     <h1 className='text-5xl font-bold'>{movie?.name || movie?.name || movie?.original_name}</h1>
                     <div className='flex mt-[1rem]'>
                      <button className='h-[3vh] w-[4vw] font-bold text-xl rounded-sm bg-gray-900 mr-[1rem] hover:bg-white hover:text-black duration-300'>Play</button>
@@ -47,7 +47,7 @@ const Hero = () => {
                     
                     
                 </div>
-                <div className='h-[33%] bg-gradient-to-t from-white/25 via-black/25 to-transparent transition-all duration-700'></div>
+                <div className='absolute bottom-0 left-0 right-0 h-[25%] bg-gradient-to-t from-white/10 via-black/25 to-transparent transition-all duration-700'></div>
         </header>
     </>
   )

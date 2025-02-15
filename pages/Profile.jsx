@@ -1,7 +1,23 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import { signOut } from "firebase/auth";
+import { auth } from "../src/firebase";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
+
+const navigate = useNavigate();
+const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      console.log("User signed out successfully");
+      navigate("/")
+
+      // Optionally redirect the user or clear any local state here
+    } catch (error) {
+      console.error("Error signing out:", error.message);
+    }
+  };
   return (
     <>
       <Navbar />
@@ -35,7 +51,7 @@ const Profile = () => {
                 <button className="h-[3rem] w-[10rem] bg-red-600 rounded-sm">Subscribe</button>
 
               </div>
-              <button className="flex justify-center items-center bg-red-600 mt-[4rem] text-2xl w-[40rem] h-[3rem]"> Sign out</button>
+              <button onClick={handleSignOut} className="flex justify-center items-center bg-red-600 mt-[4rem] text-2xl w-[40rem] h-[3rem]"> Sign out</button>
             </div>
           </div>
         </div>

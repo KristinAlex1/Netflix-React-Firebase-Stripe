@@ -19,10 +19,13 @@ const Navbar = () => {
   return (
     <>
       <div className={show ? "flex justify-between items-center fixed w-full h-20 z-10 transition-all bg-black duration-1000" : 'flex justify-between items-center fixed h-20 w-full  z-10 transition-all duration-1000'}>
+        <Link to={'/'}>
         <img
           className="h-20 w-52 pl-10"
           src="src\assets\Netflix_Logo_RGB.png"
         />
+
+        </Link>
        <Link to={"/profile"} >
        <img
           className="h-15 w-25 pr-10" 

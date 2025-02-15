@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import { signOut } from "firebase/auth";
 import { auth } from "../src/firebase";
 import { useNavigate } from "react-router-dom";
+import PlanScreen from "../components/PlanScreen";
 
 const Profile = () => {
 
@@ -11,8 +12,7 @@ const handleSignOut = async () => {
     try {
       await signOut(auth);
       console.log("User signed out successfully");
-      navigate("/")
-
+      navigate("/");
       // Optionally redirect the user or clear any local state here
     } catch (error) {
       console.error("Error signing out:", error.message);
@@ -36,21 +36,8 @@ const handleSignOut = async () => {
               </h1>
               <h1 className="pt-[2rem] text-3xl font-bold">Plans (Current Plan:)</h1>
               <h1 className="pt-[2rem] text-2xl">Renewal date: </h1>
-              <div className="flex text-xl flex-row justify-between mt-[3rem] ml-[2rem]">
-                <h1 className="flex justify-center items-center">Netflix Standard (1080p)</h1>
-                <button className="h-[3rem] w-[10rem] bg-red-600 rounded-sm">Subscribe</button>
-
-              </div>
-              <div className="flex flex-row text-xl justify-between mt-[3rem] ml-[2rem]">
-                <h1 className="flex justify-center items-center">Netflix Basic (480p)</h1>
-                <button className="h-[3rem] w-[10rem] bg-red-600 rounded-sm">Subscribe</button>
-
-              </div>
-              <div className="flex flex-row text-xl justify-between mt-[3rem] ml-[2rem]">
-                <h1 className="flex justify-center items-center">Netflix Premium (4K + HDR)</h1>
-                <button className="h-[3rem] w-[10rem] bg-red-600 rounded-sm">Subscribe</button>
-
-              </div>
+              
+              <PlanScreen/>
               <button onClick={handleSignOut} className="flex justify-center items-center bg-red-600 mt-[4rem] text-2xl w-[40rem] h-[3rem]"> Sign out</button>
             </div>
           </div>

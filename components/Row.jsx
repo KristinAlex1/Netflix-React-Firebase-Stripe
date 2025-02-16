@@ -37,8 +37,8 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
             <img
               className={`${
                 isLargeRow
-                  ? "h-[24rem] w-[20rem] m-[0.5rem] transform transition-transform duration-300 hover:scale-110"
-                  : "h-[18rem] w-[30rem] m-[0.5rem] transform transition-transform duration-300 hover:scale-110"
+                  ? "h-[20rem] w-[16rem] m-[0.5rem] transform transition-transform duration-300 hover:scale-110"
+                  : "h-[14rem] w-[26rem] m-[0.5rem] transform transition-transform duration-300 hover:scale-110"
               }`}
               key={movie.id}
               src={`${base_url}${

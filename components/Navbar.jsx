@@ -22,7 +22,7 @@ const Navbar = () => {
         <Link to={'/'}>
         <img
           className="h-20 w-52 pl-10"
-          src="src\assets\Netflix_Logo_RGB.png"
+          src="/Netflix_Logo_RGB.png"
         />
 
         </Link>

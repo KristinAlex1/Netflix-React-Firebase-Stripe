@@ -8,6 +8,34 @@ import { loadStripe } from "@stripe/stripe-js"
 const PlanScreen = () => {
   const [products, setProducts] = useState({});
   const user = useSelector(selectUser)
+  const [subscription,setSubscription] = useState(null)
+  
+    
+    useEffect(() => {
+        const fetchSubscription = async () => {
+          if (!user?.uid) return;
+    
+          try {
+            const subscriptionRef = collection(db, `customers/${user.uid}/subscription`);
+            const querySnapshot = await getDocs(subscriptionRef);
+    
+            querySnapshot.forEach((doc) => {
+              const data = doc.data();
+              setSubscription({
+                role: data.role,
+                current_period_end: data.current_period_end.seconds,
+                current_period_start: data.current_period_start.seconds,
+              });
+            });
+          } catch (error) {
+            console.error("Error fetching subscription:", error);
+          }
+        };
+    
+        fetchSubscription();
+      }, [user?.uid]);
+
+    console.log(subscription)
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -102,5 +130,6 @@ const PlanScreen = () => {
     </>
   );
 };
+
 
 export default PlanScreen;

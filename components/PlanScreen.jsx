@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import db from "../src/firebase";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { addDoc, collection, doc, getDocs, onSnapshot, query, where } from "firebase/firestore";
 import { useSelector } from "react-redux";
 import { selectUser } from "../src/features/userSlice";
+import { loadStripe } from "@stripe/stripe-js"
 
 const PlanScreen = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState({});
   const user = useSelector(selectUser)
 
   useEffect(() => {
@@ -42,24 +43,38 @@ const PlanScreen = () => {
   }, []);
 
   const loadCheckout = async (priceId) => {
-    const docRef = await db.collection('customers').doc(user.uid).collection("checkout_sessions").add({
-
-        price:priceId,
-        success_url: window.location.origin,
-        cancel_url: window.location.origin,
-    });
-
-    docRef.onSnapshot(async(snap) => {
-        const {error, sessionId}  = snap.data();
-
-        if(error) {
-            alert(`An error Occured: ${error.message}`)
-        }
-
-        if(sessionId){
-            const stripe = await loadStripe()
-        }
-    })
+    try {
+        // Reference to the customer's checkout_sessions collection
+        const checkoutSessionsRef = collection(
+          doc(collection(db, "customers"), user.uid), // Path to customer's document
+          "checkout_sessions"
+        );
+    
+        // Add a new checkout session
+        const docRef = await addDoc(checkoutSessionsRef, {
+          price: priceId,
+          success_url: window.location.origin,
+          cancel_url: window.location.origin,
+        });
+    
+        // Listen for updates to the session
+        onSnapshot(docRef, async (snap) => {
+          const { error, sessionId } = snap.data();
+    
+          if (error) {
+            alert(`An error occurred: ${error.message}`);
+          }
+    
+          if (sessionId) {
+            const stripe = await loadStripe(
+              "pk_test_51QsWdS2f8obfJNGup2UQifSL5d0fLiOEW5J9Rq4dlBN6JWnH7BRQOoFVQLHN6omNbmhL50kR0BJA1Qqv4iU5aRdX00A5yyiPxR"
+            );
+            stripe.redirectToCheckout({ sessionId });
+          }
+        });
+      } catch (error) {
+        console.error("Error in loadCheckout:", error);
+      }
   }
 
   console.log(products)
@@ -72,10 +87,10 @@ const PlanScreen = () => {
             Netflix {productData.name}
           </h1>
           {
-            productId.active ? <button className="h-[3rem] w-[10rem] bg-gray-600 rounded-sm">
+            productId.active ? (<button className="h-[3rem] w-[10rem] bg-gray-600 rounded-sm">
             Current Package
-          </button> :
-          <button className="h-[3rem] w-[10rem] bg-red-600 rounded-sm cursor-pointer">
+          </button>) :
+          <button onClick={() => loadCheckout(productData.prices.priceId)} className="h-[3rem] w-[10rem] bg-red-600 rounded-sm cursor-pointer">
             Subscribe
           </button>
           }

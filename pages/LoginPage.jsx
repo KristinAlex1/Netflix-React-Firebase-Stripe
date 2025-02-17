@@ -5,64 +5,66 @@ import SignIn from "../components/SignIn";
 const LoginPage = () => {
   const [signIn, setSignIn] = useState(false);
 
-  
   return (
     <>
-      <div
-        className={
-          "flex justify-between items-center fixed w-full h-20 z-10 transition-all duration-1000"
-        }
-      >
-        <img
-          className="h-20 w-52 pl-10"
-          src="src\assets\Netflix_Logo_RGB.png"
-        />
+      {/* Navbar */}
+      <div className="flex justify-between items-center fixed w-full h-20 z-10 transition-all duration-1000">
+        <img className="h-20 w-32 pl-10 mix-blend-screen" src="/logo.png" />
         <button
           onClick={() => setSignIn(true)}
-          className="h-[3vh] w-[4vw] bg-red-600 text-white text-xl mr-[4rem] rounded-sm hover:bg-gray-900 duration-300 cursor-pointer"
+          className="h-[3rem] w-[6rem] bg-red-600 text-white text-lg mr-[4rem] rounded-sm hover:bg-gray-900 duration-300 cursor-pointer"
         >
           Sign In
         </button>
       </div>
-      
-        <header
-          style={{
-            backgroundSize: "cover",
-            backgroundPosition: "center center",
-            backgroundImage: `url("https://wallpapers.com/images/hd/netflix-background-gs7hjuwvv2g0e9fj.jpg")`,
-          }}
-          className="h-screen w-full bg-no-repeat"
-        >
-        
-          <div className="h-[35%] bg-gradient-to-b from-black/95 via-black/85 to-transparent transition-all duration-700"></div>
-          {signIn ? <SignIn/> : 
-          <div className="flex flex-col justify-center items-center">
-            <h1 className="text-white text-7xl font-bold pb-[2rem]">
-              Unlimited films, TV programmes and more.
-            </h1>
-            <h1 className="text-white text-5xl pb-[4rem]">
-              Watch anywhere. Cancel at any time.
-            </h1>
-            <h1 className="text-white text-3xl pb-[2rem]">
-              Ready to watch? Enter your email to create or restart your
-              membership.
-            </h1>
-            <div className="flex items-center justify-center">
-              <input
-                className="h-[3.5vh] w-[20vw] rounded-sm bg-white"
-                placeholder="Email Address"
-              ></input>
-              <button
-                onClick={() => setSignIn(true)}
-                className="h-[3.5vh] w-[6vw] ml-[1rem] rounded-sm text-white text-2xl bg-red-600 cursor-pointer"
-              >
-                Get Started
-              </button>
-            </div>
-          </div>}
-          <div className="h-[45%] bg-gradient-to-t from-black/95 via-black/85 to-transparent transition-all duration-700"></div>
-        </header>
-      
+
+      {/* Header Section with Background Image & Gradient Overlay */}
+      <header
+        className="relative flex flex-col justify-center items-center min-h-screen w-full bg-no-repeat"
+        style={{
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
+          backgroundImage: `url("https://wallpapers.com/images/hd/netflix-background-gs7hjuwvv2g0e9fj.jpg")`,
+        }}
+      >
+        {/* Gradient Overlay */}
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/50 via-black/40 to-transparent"></div>
+
+        {/* Content */}
+        <div className="relative z-10 flex flex-col justify-center items-center text-center px-6">
+          {signIn ? (
+            <SignIn />
+          ) : (
+            <>
+              <h1 className="text-white text-7xl font-bold pb-6">
+                Unlimited films, TV programmes and more.
+              </h1>
+              <h2 className="text-white text-4xl pb-6">
+                Watch anywhere. Cancel at any time.
+              </h2>
+              <h3 className="text-white text-2xl pb-6">
+                Ready to watch? Enter your email to create or restart your membership.
+              </h3>
+
+              {/* Email Input & Button */}
+              <div className="flex items-center justify-center">
+                <input
+                  className="h-[4rem] w-[30vw] rounded-sm bg-white p-3 text-black text-lg"
+                  placeholder="Email Address"
+                />
+                <button
+                  onClick={() => setSignIn(true)}
+                  className="h-[4rem] w-[12vw] ml-4 rounded-sm text-white text-xl bg-red-600 cursor-pointer hover:bg-red-700"
+                >
+                  Get Started
+                </button>
+              </div>
+            </>
+          )}
+        </div>
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black via-black/60 to-transparent"></div>
+
+      </header>
     </>
   );
 };

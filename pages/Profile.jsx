@@ -32,7 +32,7 @@ const handleSignOut = async () => {
             />
             <div>
               <h1 className="flex items-center pl-[2rem] h-[3rem] w-[40rem] bg-gray-500">
-                email
+                
               </h1>
               <h1 className="pt-[2rem] text-3xl font-bold">Plans (Current Plan:)</h1>
               <h1 className="pt-[2rem] text-2xl">Renewal date: </h1>
